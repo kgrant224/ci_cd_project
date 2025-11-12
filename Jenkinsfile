@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        PATH = "/root/.local/bin:${env.PATH}"
         ANSIBLE_DIR = "ansible"
         INVENTORY = "staging"
     }
@@ -9,7 +10,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-org/ci_cd_project.git'
+                git branch: 'main',
+                    url: 'git@github.com:kgrant224/ci_cd_project.git',
+                    credentialsId: 'git'
             }
         }
 
@@ -34,7 +37,7 @@ pipeline {
         stage('Post-Deployment Tests') {
             steps {
                 echo "Running smoke tests..."
-                sh 'curl -I http://your-server-address'
+                sh 'curl -I http://localhost:8080'   // update this as needed
             }
         }
     }
