@@ -1,0 +1,14 @@
+---
+- name: Rollback deployment
+  hosts: appservers
+  become: yes
+  tasks:
+    - name: Restore previous version from backup
+      copy:
+        src: /opt/app/backup/
+        dest: /opt/app/
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0644'
+

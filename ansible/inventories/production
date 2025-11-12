@@ -1,0 +1,5 @@
+[webservers]
+prod-web ansible_host=192.168.4.98 ansible_user=ubuntu
+
+[appservers]
+prod-app ansible_host=192.168.4.102 ansible_user=ubuntu
