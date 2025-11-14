@@ -5,7 +5,8 @@ pipeline {
         PATH = "/root/.local/bin:${env.PATH}"    // Ensure Ansible in PATH
         ANSIBLE_DIR = "ansible"
         INVENTORY = "staging"
-#       GIT_CREDENTIAL_ID = "eaf80eb5-8136-4416-950c-ec3b7868f999" // SSH key for GitHub
+        // SSH key for GitHub
+        GIT_CREDENTIAL_ID = "eaf80eb5-8136-4416-950c-ec3b7868f999" 
         ANSIBLE_CONFIG = "${env.WORKSPACE}/ansible/ansible.cfg"
     }
 
